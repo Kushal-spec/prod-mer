@@ -4,10 +4,23 @@
   "version": "1.0.0",
   "description": "A basic example extension with only required keys",
   "permissions": [
-    "scripting"
+    "tabs",
+    "activeTab",
+    "webNavigation",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["content.js"]
+    }
   ],
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "open"
+    "default_popup": "popup.html"
+   
   }
 }

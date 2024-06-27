@@ -5,7 +5,11 @@ const CopyWebpackPlugin=require('copy-webpack-plugin');
 
 module.exports = {
   mode:'production',  
-  entry: './src/index.tsx',
+  entry:{
+    filename:'./src/index.tsx',
+    background:'./src/background.ts',
+    content:'./src/content.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
@@ -21,6 +25,7 @@ module.exports = {
                 presets:[
                     '@babel/preset-env',
                     ['@babel/preset-react',{"runtime":"automatic"}],
+                     "@babel/preset-typescript"
                     
                     
                 ],

@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener(((e,o,t)=>{"movieDetected"!==e.action&&"openPopup"!==e.action||(console.log("Movie detected in background script:",e.movieTitle),chrome.storage.local.set({latestMovie:e.movieTitle},(()=>{console.log("Movie title saved in storage:",e.movieTitle)})),chrome.action.openPopup())}));
