@@ -9,13 +9,17 @@
     "webNavigation",
     "scripting",
     "storage"
+    
   ],
   "background": {
     "service_worker": "background.js"
   },
+  "host_permissions": [
+    "https://www.google.com/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/search*"],
+      "matches": ["*://www.google.com/search*"],
       "js": ["content.js"]
     }
   ],

@@ -7,8 +7,8 @@ module.exports = {
   mode:'production',  
   entry:{
     filename:'./src/index.tsx',
-    background:'./src/background.ts',
-    content:'./src/content.ts'
+    content:'./src/content.ts',
+    background:'./src/background.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -63,7 +63,7 @@ module.exports = {
     new CopyWebpackPlugin({
         patterns:[
             {
-                from:'public'
+                from:'public',to:'.'
             },
         ]
     })

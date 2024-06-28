@@ -1,7 +1,23 @@
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'storeMovieTitle' && message.title) {
-    chrome.storage.local.set({ latestMovieTitle: message.title }, () => {
-      console.log('Stored movie title:', message.title);
-    });
-  }
-});
+
+
+// chrome.runtime.onMessage.addListener((message)=>{
+//    console.log("RSM",message);
+    
+// })
+
+
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.local.set({ movieHistory: [] });
+  });
+  
+  chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (changeInfo.status === 'complete' && tab.url?.includes('google.com/search')) {
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        files: ['content.js'],
+      });
+    }
+  });
+
+
+

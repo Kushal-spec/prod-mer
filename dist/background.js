@@ -1,1 +1,1 @@
-chrome.runtime.onMessage.addListener(((e,t,o)=>{"storeMovieTitle"===e.action&&e.title&&chrome.storage.local.set({latestMovieTitle:e.title},(()=>{console.log("Stored movie title:",e.title)}))}));
+chrome.runtime.onInstalled.addListener((()=>{chrome.storage.local.set({movieHistory:[]})})),chrome.tabs.onUpdated.addListener(((e,t,o)=>{var r;"complete"===t.status&&null!==(r=o.url)&&void 0!==r&&r.includes("google.com/search")&&chrome.scripting.executeScript({target:{tabId:e},files:["content.js"]})}));
